@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: skypulse-weather
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: H2_CONSOLE_ENABLED
+        value: false
+    healthCheckPath: /actuator/health
