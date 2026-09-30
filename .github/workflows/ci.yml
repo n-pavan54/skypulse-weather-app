@@ -14,19 +14,19 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Set up JDK 22
+    - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
-        java-version: '22'
+        java-version: '21'
         distribution: 'temurin'
         cache: maven
 
-    - name: Build with Maven
+    - name: Build and Test with Maven
       run: mvn clean verify --no-transfer-progress
 
     - name: Upload Build Artifact (JAR)
       uses: actions/upload-artifact@v4
       with:
         name: weather-app-jar
-        path: target/weather-app-*.jar
+        path: target/app.jar
         retention-days: 7
